@@ -80,19 +80,9 @@ task packDeb(type: Deb, dependsOn: fatJar) {
   }
 
   // installer scripts
-  println "Calling Pre-install ************************ "
-  
   preInstall = file('pkg_scripts/preInstall.sh')
-
-  println "Calling Post-install ************************ "
-
   postInstall = file('pkg_scripts/postInstall.sh')
-  
-  println "Calling Post Uninstall ************************ "
-
   postUninstall = file('pkg_scripts/postUninstall.sh')
-
-  println "from .conf file ************************ "
 
   from(file('pkg_scripts/hello-karyon-rxnetty.conf')) {
     into('/etc/init')
@@ -100,8 +90,6 @@ task packDeb(type: Deb, dependsOn: fatJar) {
     permissionGroup = 'root'
     fileType = CONFIG | NOREPLACE
   }
-
-  println "Last step ************************ "
 
   from(file('pkg_scripts/hello-karyon-rxnetty')) {
     into('/etc/logrotate.d')
