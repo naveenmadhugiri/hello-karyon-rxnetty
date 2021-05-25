@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 # create log folder
 install  --mode=755 --directory  /var/log/hello-karyon-rxnetty
